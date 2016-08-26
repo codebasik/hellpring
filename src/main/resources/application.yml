@@ -1,0 +1,5 @@
+db:
+  driver: "org.h2.Driver"
+  jdbcUrl: "jdbc:h2:tcp://localhost/~/helljava"
+  user: "sa"
+  password: ""

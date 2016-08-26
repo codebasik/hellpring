@@ -23,17 +23,27 @@ repositories {
 
 dependencies {
 
-    compile "org.springframework:spring-context:${version.spring}"
+    //basic
     compile "org.springframework:spring-webmvc:${version.spring}"
     compile "javax.servlet:javax.servlet-api:${version.servletApi}"
     compile "javax.servlet.jsp:jsp-api:${version.jspApi}"
 
+    //DB
     compile "com.h2database:h2:1.4.187"
     compile "org.springframework:spring-jdbc:${version.spring}"
+    compile group: 'c3p0', name: 'c3p0', version: '0.9.0.4'
+
+    //log
+    compile group: 'log4j', name: 'log4j', version: '1.2.16'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.1'
+
+    providedCompile 'javax.servlet:javax.servlet-api:3.0.1'
+    providedCompile 'javax.servlet.jsp:jsp-api:2.2'
 
     runtime 'javax.servlet:jstl:1.2'
 
-        compile "org.springframework:spring-test:${version.spring}"
+    //test
+    compile "org.springframework:spring-test:${version.spring}"
     testCompile 'org.mockito:mockito-core:1.+'
     testCompile group: 'junit', name: 'junit', version: "${version.junit}"
 }
