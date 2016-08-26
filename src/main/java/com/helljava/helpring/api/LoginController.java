@@ -63,8 +63,7 @@ public class LoginController {
 //            response.addCookie(CookieBox.createCookie("isSaveCheck", "", 0));
 //        }
 
-
-        return "main";
+        return "redirect:/";
     }
 
 }

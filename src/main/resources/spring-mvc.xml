@@ -19,11 +19,11 @@
         <mvc:jsp prefix="/WEB-INF/view/" />
     </mvc:view-resolvers>
 
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/board/**" />
-            <bean class = "com.springboard.hell.web.interceptor.AuthCheckInterceptor" />
-        </mvc:interceptor>
-    </mvc:interceptors>
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/board/**" />-->
+            <!--<bean class = "com.springboard.hell.web.interceptor.AuthCheckInterceptor" />-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
 
 </beans>

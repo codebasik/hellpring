@@ -3,7 +3,6 @@ package com.helljava.helpring.config;
 import com.helljava.helpring.repository.LoginRepositoryImpl;
 import com.helljava.helpring.repository.LoginRespository;
 import com.helljava.helpring.service.LoginService;
-import com.helljava.helpring.service.LoginServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +23,7 @@ public class JavaConfig {
 
     @Bean
     public LoginService loginService() {
-        return new LoginServiceImpl();
+        return new LoginService();
     }
 
     @Bean
