@@ -1,9 +1,15 @@
 package com.helljava.helpring.repository;
 
+import com.helljava.helpring.domain.Board;
+
+import java.util.List;
+
 /**
  * Created by yongjunjung on 2016. 7. 25..
  */
-public class BoardRepository {
+public interface BoardRepository {
+
+    public List<Board> findAll();
 
 //    public void write(HttpServletRequest request) {
 //

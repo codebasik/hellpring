@@ -1,7 +1,10 @@
 package com.helljava.helpring.config;
 
+import com.helljava.helpring.repository.BoardRepository;
+import com.helljava.helpring.repository.BoardRepositoryImpl;
 import com.helljava.helpring.repository.LoginRepositoryImpl;
 import com.helljava.helpring.repository.LoginRespository;
+import com.helljava.helpring.service.BoardService;
 import com.helljava.helpring.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -30,5 +33,14 @@ public class JavaConfig {
     public LoginRespository loginRespository() {
         return new LoginRepositoryImpl(datasource);
     }
+
+    @Bean
+    public BoardService boardService() {
+        return new BoardService();
+    }
+
+    @Bean
+    public BoardRepository boardRepository() {
+        return new BoardRepositoryImpl(datasource);}
 
 }

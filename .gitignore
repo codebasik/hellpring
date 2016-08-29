@@ -58,3 +58,19 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+.gradle/
+.idea/
+build/classes/main/com/helljava/helpring/api/
+build/classes/main/com/helljava/helpring/config/
+build/classes/main/com/helljava/helpring/domain/
+build/classes/main/com/helljava/helpring/repository/
+build/classes/main/com/helljava/helpring/rowmapper/
+build/classes/main/com/helljava/helpring/service/
+build/classes/main/com/helljava/helpring/util/
+build/dependency-cache/
+build/libs/
+build/resources/main/application.yml
+build/resources/main/db.properties
+build/resources/main/spring-app.xml
+build/tmp/compileJava/
+src/test/
