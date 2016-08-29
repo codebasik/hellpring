@@ -7,7 +7,7 @@
 <div class="container">
     <div class="header">
         <ul class="nav nav-pills pull-right">
-            <li class="active"><a href="/main.do">Home</a></li>
+            <li class="active"><a href="/">Home</a></li>
         </ul>
         <h3 class="text-muted">로그인</h3>
     </div>
@@ -23,7 +23,7 @@
         </div>
         <div class="checkbox">
             <label>
-                <input type="checkbox" name="isSaveCheck" id="isSaveCheck" ${isSaveCheck == "Y" ? "checked" : ""}> 아이디저장
+                <input type="checkbox" name="isSave" id="isSave" ${isSave == "Y" ? "checked" : ""}> 아이디저장
             </label>
         </div>
         <a href="/register"><p>회원가입</p></a>
