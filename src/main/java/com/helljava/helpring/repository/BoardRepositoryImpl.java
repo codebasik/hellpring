@@ -66,4 +66,16 @@ public class BoardRepositoryImpl extends JdbcDaoSupport implements BoardReposito
 
         return boardList.isEmpty() ? null : boardList;
     }
+
+    @Override
+    public Board boardDetail(String seq) {
+
+        List<Board> boardList = getJdbcTemplate().query(
+                "SELECT * FROM BOARD WHERE  BOARD_SEQ = ?",
+                new BoardRowMapper(),
+                seq
+        );
+
+        return boardList.isEmpty() ? null : boardList.get(0);
+    }
 }

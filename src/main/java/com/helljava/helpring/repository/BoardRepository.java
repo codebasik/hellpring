@@ -14,6 +14,8 @@ public interface BoardRepository {
     List<Board> findByContent(String content);
     List<Board> findByTitle(String title);
 
+    Board boardDetail(String seq);
+
 //    public void write(HttpServletRequest request) {
 //
 //        String userName = request.getParameter("username");

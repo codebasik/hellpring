@@ -49,4 +49,8 @@ public class BoardService {
 
         return boardList;
     }
+
+    public Board getBoardDetail(String seq) {
+        return boardRepository.boardDetail(seq);
+    }
 }

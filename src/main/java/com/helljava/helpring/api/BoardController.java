@@ -42,5 +42,15 @@ public class BoardController {
         return "/board/list";
     }
 
+    @RequestMapping(value = "/detail", method = GET)
+    public String boardDetail(Model model,
+                              @RequestParam(value = "seq", required = true) String seq) {
+
+        Board detail = boardService.getBoardDetail(seq);
+
+        model.addAttribute("detail", detail);
+
+        return "/board/detail";
+    }
 
 }
