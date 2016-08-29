@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
@@ -23,11 +26,18 @@ public class BoardController {
     BoardService boardService;
 
     @RequestMapping(value = "/list", method = GET)
-    public String boardList(Model model) {
+    public String boardList(Model model,
+                            @RequestParam(value = "searchWord", required = false) String searchWord,
+                            @RequestParam(value = "queryInput", required = false) String queryInput) {
 
-        List<Board> boardList = boardService.findAll();
+        Map<String, String> boardSearch = new HashMap<>();
+        boardSearch.put("searchWord", searchWord);
+        boardSearch.put("queryInput", queryInput);
+
+        List<Board> boardList = boardService.getBoardList(searchWord, queryInput);
 
         model.addAttribute("boardList", boardList);
+        model.addAttribute("boardSearch", boardSearch);
 
         return "/board/list";
     }

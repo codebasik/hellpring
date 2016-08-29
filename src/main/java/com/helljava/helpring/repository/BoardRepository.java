@@ -9,7 +9,10 @@ import java.util.List;
  */
 public interface BoardRepository {
 
-    public List<Board> findAll();
+    List<Board> findAll();
+    List<Board> findByName(String name);
+    List<Board> findByContent(String content);
+    List<Board> findByTitle(String title);
 
 //    public void write(HttpServletRequest request) {
 //

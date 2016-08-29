@@ -5,7 +5,9 @@ import com.helljava.helpring.repository.BoardRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,11 +20,32 @@ public class BoardService {
     @Autowired
     BoardRepository boardRepository;
 
-    public List<Board> findAll() {
+    public List<Board> getBoardList(String searchWord, String queryInput) {
 
-        List<Board> boardList = boardRepository.findAll();
+        List<Board> boardList = new ArrayList<>();
 
-        log.info("[BoardService] findAll >> {}", boardList.toString());
+        if (StringUtils.isEmpty(queryInput)) {
+            queryInput = "all";
+        }
+
+        switch (queryInput) {
+            case "NAME":
+                log.info("[boardrepository] findByName >>");
+                boardList = boardRepository.findByName(searchWord);
+                break;
+            case "CONTENT":
+                log.info("[boardrepository] findByContent >>");
+                boardList = boardRepository.findByContent(searchWord);
+                break;
+            case "TITLE":
+                log.info("[boardrepository] findByTitle >>");
+                boardList = boardRepository.findByTitle(searchWord);
+                break;
+            default:
+                log.info("[boardrepository] findAll >>");
+                boardList = boardRepository.findAll();
+                break;
+        }
 
         return boardList;
     }

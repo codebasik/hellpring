@@ -31,4 +31,39 @@ public class BoardRepositoryImpl extends JdbcDaoSupport implements BoardReposito
 
         return boardList.isEmpty() ? null : boardList;
     }
+
+    @Override
+    public List<Board> findByName(String name) {
+
+        List<Board> boardList = getJdbcTemplate().query(
+                "SELECT * FROM BOARD WHERE NAME LIKE '%"+name+"%'",
+                new BoardRowMapper()
+        );
+
+        return boardList.isEmpty() ? null : boardList;
+    }
+
+    @Override
+    public List<Board> findByContent(String content) {
+        List<Board> boardList = getJdbcTemplate().query(
+                "SELECT * FROM BOARD WHERE CONTENT LIKE '%"+content+"%'",
+                new BoardRowMapper()
+        );
+
+        return boardList.isEmpty() ? null : boardList;
+
+    }
+
+    @Override
+    public List<Board> findByTitle(String title) {
+
+        log.info("title={}", title);
+
+        List<Board> boardList = getJdbcTemplate().query(
+                "SELECT * FROM BOARD WHERE TITLE LIKE '%"+title+"%'",
+                new BoardRowMapper()
+        );
+
+        return boardList.isEmpty() ? null : boardList;
+    }
 }

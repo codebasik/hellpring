@@ -14,7 +14,7 @@ public class BoardRowMapper implements RowMapper<Board> {
     @Override
     public Board mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-        Board board = new Board(Integer.parseInt(rs.getString("BOARD_SEQ")), rs.getString("NAME"), rs.getString("TITLE"), rs.getString("CONTENT"));
+        Board board = new Board(Integer.parseInt(rs.getString("BOARD_SEQ")), rs.getString("TITLE"), rs.getString("CONTENT"), rs.getString("NAME"));
 
         return board;
     }
