@@ -53,4 +53,10 @@ public class BoardService {
     public Board getBoardDetail(String seq) {
         return boardRepository.boardDetail(seq);
     }
+
+    public void deleteBoard(String seq) {
+        boardRepository.deleteBoard(seq);
+    }
+
+
 }

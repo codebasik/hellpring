@@ -53,4 +53,12 @@ public class BoardController {
         return "/board/detail";
     }
 
+    @RequestMapping(value = "/delete", method = GET)
+    public String boardDelete(Model model,
+                              @RequestParam(value = "seq", required = true) String seq) {
+
+        boardService.deleteBoard(seq);
+
+        return "redirect:/board/list";
+    }
 }

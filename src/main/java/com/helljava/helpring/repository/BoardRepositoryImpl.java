@@ -78,4 +78,12 @@ public class BoardRepositoryImpl extends JdbcDaoSupport implements BoardReposito
 
         return boardList.isEmpty() ? null : boardList.get(0);
     }
+
+    @Override
+    public void deleteBoard(String seq) {
+        getJdbcTemplate().update(
+                "DELETE FROM BOARD WHERE BOARD_SEQ = ?",
+                seq
+        );
+    }
 }

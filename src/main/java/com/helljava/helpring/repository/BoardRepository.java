@@ -15,6 +15,7 @@ public interface BoardRepository {
     List<Board> findByTitle(String title);
 
     Board boardDetail(String seq);
+    void deleteBoard(String seq);
 
 //    public void write(HttpServletRequest request) {
 //
