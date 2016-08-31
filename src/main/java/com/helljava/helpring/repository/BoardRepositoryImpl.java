@@ -1,6 +1,7 @@
 package com.helljava.helpring.repository;
 
 import com.helljava.helpring.domain.Board;
+import com.helljava.helpring.domain.BoardDto;
 import com.helljava.helpring.rowmapper.BoardRowMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,10 +81,18 @@ public class BoardRepositoryImpl extends JdbcDaoSupport implements BoardReposito
     }
 
     @Override
-    public void deleteBoard(String seq) {
+    public void delete(String seq) {
         getJdbcTemplate().update(
                 "DELETE FROM BOARD WHERE BOARD_SEQ = ?",
                 seq
+        );
+    }
+
+    @Override
+    public void write(BoardDto boardDto) {
+        getJdbcTemplate().update(
+                "INSERT INTO BOARD(NAME, TITLE, CONTENT) VALUES(?,?,?)",
+                boardDto.getUsername(), boardDto.getTitle(), boardDto.getContent()
         );
     }
 }

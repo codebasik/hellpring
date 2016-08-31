@@ -1,6 +1,7 @@
 package com.helljava.helpring.repository;
 
 import com.helljava.helpring.domain.Board;
+import com.helljava.helpring.domain.BoardDto;
 
 import java.util.List;
 
@@ -15,7 +16,8 @@ public interface BoardRepository {
     List<Board> findByTitle(String title);
 
     Board boardDetail(String seq);
-    void deleteBoard(String seq);
+    void delete(String seq);
+    void write(BoardDto boardDto);
 
 //    public void write(HttpServletRequest request) {
 //
@@ -159,7 +161,7 @@ public interface BoardRepository {
 //                .getSeq();
 //    }
 //
-//    public void deleteBoard(int seq) {
+//    public void delete(int seq) {
 //        Connection conn = DBConnection.getConnection();
 //        PreparedStatement pstmt = null;
 //
@@ -173,7 +175,7 @@ public interface BoardRepository {
 //
 //        } catch (SQLException e) {
 //            e.printStackTrace();
-//            throw new IllegalArgumentException("deleteBoard Error!");
+//            throw new IllegalArgumentException("delete Error!");
 //        } finally {
 //            DBConnection.close(conn, pstmt);
 //        }

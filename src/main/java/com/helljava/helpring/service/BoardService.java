@@ -1,6 +1,7 @@
 package com.helljava.helpring.service;
 
 import com.helljava.helpring.domain.Board;
+import com.helljava.helpring.domain.BoardDto;
 import com.helljava.helpring.repository.BoardRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,7 @@ public class BoardService {
     @Autowired
     BoardRepository boardRepository;
 
-    public List<Board> getBoardList(String searchWord, String queryInput) {
+    public List<Board> list(String searchWord, String queryInput) {
 
         List<Board> boardList = new ArrayList<>();
 
@@ -50,12 +51,16 @@ public class BoardService {
         return boardList;
     }
 
-    public Board getBoardDetail(String seq) {
+    public Board detail(String seq) {
         return boardRepository.boardDetail(seq);
     }
 
-    public void deleteBoard(String seq) {
-        boardRepository.deleteBoard(seq);
+    public void delete(String seq) {
+        boardRepository.delete(seq);
+    }
+
+    public void write(BoardDto boardDto) {
+        boardRepository.write(boardDto);
     }
 
 

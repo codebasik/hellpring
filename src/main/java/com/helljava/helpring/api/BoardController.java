@@ -1,6 +1,7 @@
 package com.helljava.helpring.api;
 
 import com.helljava.helpring.domain.Board;
+import com.helljava.helpring.domain.BoardDto;
 import com.helljava.helpring.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * Created by yongjunjung on 2016. 8. 23..
@@ -34,7 +36,7 @@ public class BoardController {
         boardSearch.put("searchWord", searchWord);
         boardSearch.put("queryInput", queryInput);
 
-        List<Board> boardList = boardService.getBoardList(searchWord, queryInput);
+        List<Board> boardList = boardService.list(searchWord, queryInput);
 
         model.addAttribute("boardList", boardList);
         model.addAttribute("boardSearch", boardSearch);
@@ -46,7 +48,7 @@ public class BoardController {
     public String boardDetail(Model model,
                               @RequestParam(value = "seq", required = true) String seq) {
 
-        Board detail = boardService.getBoardDetail(seq);
+        Board detail = boardService.detail(seq);
 
         model.addAttribute("detail", detail);
 
@@ -57,8 +59,27 @@ public class BoardController {
     public String boardDelete(Model model,
                               @RequestParam(value = "seq", required = true) String seq) {
 
-        boardService.deleteBoard(seq);
+        boardService.delete(seq);
 
         return "redirect:/board/list";
     }
+
+    @RequestMapping(value = "/write", method = GET)
+    public String boardWrite(Model model) {
+        return "/board/write";
+    }
+
+    //TODO @RequestParam -> @RequestBody
+    @RequestMapping(value = "/write", method = POST)
+    public String boardWrite(Model model,
+                             @RequestParam(value = "username", required = true) String username,
+                             @RequestParam(value = "title", required = true) String title,
+                             @RequestParam(value = "content", required = true) String content) {
+
+        BoardDto boardDto = new BoardDto(title, content, username);
+        boardService.write(boardDto);
+        return "redirect:/board/list";
+    }
+
+
 }
