@@ -8,7 +8,7 @@ import com.helljava.helpring.domain.User;
 
 public interface LoginRespository {
 
-    User findByUserIdAndPassword(String id);
+    User findByUserIdAndPassword(String id, String password);
 
 
 }

@@ -58,7 +58,7 @@ public class LoginController {
         log.info("[LOGIN] userId={} , userPassword={}", userId, userPassword);
         log.info("isSave={}", isSave);
 
-        User user = loginService.login(userId);
+        User user = loginService.login(userId, userPassword);
 
         if (StringUtils.isEmpty(user)) {
             return "login";

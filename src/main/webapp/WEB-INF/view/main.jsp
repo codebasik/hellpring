@@ -21,29 +21,27 @@
 
 <c:set var="s_user" value="<%=s_user%>"/>
 
-<%--<c:if test="${empty s_user}">--%>
-    <%--<c:redirect url="/login.do"/>--%>
-<%--</c:if>--%>
+<c:if test="${empty s_user}">
+    <c:redirect url="/login"/>
+</c:if>
 
 <body>
 <div class="container">
     <div class="header">
         <ul class="nav nav-pills pull-right">
-            <li class="active"><a href="/main.do">Home</a></li>
-            <li><a href="/login">로그인</a></li>
+            <li class="active"><a href="/">Home</a></li>
+            <c:if test="${empty s_user}">
+                <li><a href="/login">로그인</a></li>
+            </c:if>
             <li><a href="/board/list">글목록</a></li>
-
-            <%--<c:if test="${not empty s_user}">--%>
-                <%--<li><a href="/logout.do">로그아웃</a></li>--%>
-            <%--</c:if>--%>
+            <c:if test="${not empty s_user}">
+                <li><a href="/logout">로그아웃</a></li>
+            </c:if>
         </ul>
         <h3 class="text-muted">메인</h3>
     </div>
 
     <div class="form-group">
-        <%--<c:if test="${empty s_user}">--%>
-            <%--<c:redirect url="/login.do"/>--%>
-        <%--</c:if>--%>
         <h1>지옥자바</h1>
         <p>지옥자바 게시판 만들기 과제</p>
     </div>

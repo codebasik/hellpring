@@ -13,8 +13,8 @@ public class LoginService {
     @Autowired
     LoginRespository loginRespository;
 
-    public User login(String userId) {
-        return loginRespository.findByUserIdAndPassword(userId);
+    public User login(String userId, String userPassword) {
+        return loginRespository.findByUserIdAndPassword(userId, userPassword);
     }
 
 }

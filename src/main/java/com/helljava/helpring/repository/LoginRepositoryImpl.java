@@ -22,15 +22,13 @@ public class LoginRepositoryImpl extends JdbcDaoSupport implements LoginResposit
         super.setDataSource(dataSource);
     }
 
-    public User findByUserIdAndPassword(String id) {
+    public User findByUserIdAndPassword(String id, String password) {
 
         List<User> user = getJdbcTemplate().query(
-                "SELECT * FROM USER WHERE ID=?",
+                "SELECT * FROM USER WHERE ID=? AND PASSWORD=?",
                 new UserRowMapper(),
-                id);
-
-        log.info("[findByUserIdAndPassword] user={}", user.get(0).getUsername());
-
+                id, password);
+        
         return user.isEmpty() ? null : user.get(0);
     }
 }
