@@ -1,10 +1,8 @@
 package com.helljava.helpring.config;
 
-import com.helljava.helpring.repository.BoardRepository;
-import com.helljava.helpring.repository.BoardRepositoryImpl;
-import com.helljava.helpring.repository.LoginRepositoryImpl;
-import com.helljava.helpring.repository.LoginRespository;
+import com.helljava.helpring.repository.*;
 import com.helljava.helpring.service.BoardService;
+import com.helljava.helpring.service.JoinService;
 import com.helljava.helpring.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -43,4 +41,13 @@ public class JavaConfig {
     public BoardRepository boardRepository() {
         return new BoardRepositoryImpl(datasource);}
 
+    @Bean
+    public JoinService joinService() {
+        return new JoinService();
+    }
+
+    @Bean
+    public JoinRepository joinRepository() {
+        return new JoinRepositoryImpl(datasource);
+    }
 }
